@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信HTML插件</title>
+    <link rel="stylesheet" href="popup.css">
+    <style>
+        /* 内联样式确保基本样式加载 */
+        .popup-container {
+            width: 360px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .popup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .popup-content {
+            padding: 20px;
+        }
+        
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 8px;
+        }
+        
+        .action-btn.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .action-btn.secondary {
+            background: #f8f9fa;
+            color: #333;
+            border: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-container">
+        <div class="popup-header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12A3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5a3.5 3.5 0 0 1-3.5 3.5m7.43-2.53c.04-.32.07-.64.07-.97c0-.33-.03-.66-.07-1l2.11-1.63c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.31-.61-.22l-2.49 1c-.52-.39-1.06-.73-1.69-.98l-.37-2.65A.506.506 0 0 0 14 2h-4c-.25 0-.46.18-.5.42l-.37 2.65c-.63.25-1.17.59-1.69.98l-2.49-1c-.22-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64L4.57 11c-.04.34-.07.67-.07 1c0 .33.03.65.07.97l-2.11 1.66c-.19.15-.25.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1.01c.52.4 1.06.74 1.69.99l.37 2.65c.04.24.25.42.5.42h4c.25 0 .46-.18.5-.42l.37-2.65c.63-.26 1.17-.59 1.69-.99l2.49 1.01c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.66Z"/>
+                </svg>
+            </div>
+            <h1>微信HTML插件</h1>
+        </div>
+
+        <div class="popup-content">
+            <div class="status-section">
+                <div class="status-item">
+                    <div class="status-indicator" id="page-status"></div>
+                    <span id="status-text">检测页面状态...</span>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <h3>快捷操作</h3>
+                <div class="action-buttons">
+                    <button class="action-btn primary" id="open-editor">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                        </svg>
+                        打开HTML编辑器
+                    </button>
+                    
+                    <button class="action-btn secondary" id="quick-insert">
+                        <svg viewBox="0 0 24 24" width="16" height="16">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                        </svg>
+                        快速插入模板
+                    </button>
+                </div>
+            </div>
+
+            <div class="template-section">
+                <h3>常用模板</h3>
+                <div class="template-list" id="template-list">
+                    <div class="template-loading">加载中...</div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>设置</h3>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="auto-convert">
+                        <span class="checkmark"></span>
+                        自动转换为微信兼容格式
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="enable-svg">
+                        <span class="checkmark"></span>
+                        启用SVG支持
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-footer">
+            <div class="version">v1.0.1</div>
+            <div class="links">
+                <a href="#" id="help-link">帮助</a>
+                <a href="#" id="feedback-link">反馈</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html> 

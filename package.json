@@ -1,0 +1,69 @@
+{
+  "name": "wexin-html-plugin",
+  "version": "1.0.0",
+  "description": "一个功能强大的Chrome扩展插件，专为微信公众号编辑器设计，支持插入自定义HTML代码、SVG图片和丰富的模板库。",
+  "main": "manifest.json",
+  "scripts": {
+    "build": "echo 'Building extension...' && npm run validate",
+    "validate": "node scripts/validate.js",
+    "pack": "node scripts/pack.js",
+    "dev": "echo 'Development mode - Load extension in Chrome developer mode'",
+    "test": "echo 'Running tests...'",
+    "lint": "echo 'Linting code...'",
+    "clean": "rimraf dist *.crx *.pem"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ieasydevops/wexin-plugin.git"
+  },
+  "keywords": [
+    "chrome-extension",
+    "wechat",
+    "html",
+    "editor",
+    "svg",
+    "template",
+    "微信公众号",
+    "HTML插件"
+  ],
+  "author": {
+    "name": "ieasydevops",
+    "email": "support@ieasydevops.com",
+    "url": "https://github.com/ieasydevops"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ieasydevops/wexin-plugin/issues"
+  },
+  "homepage": "https://github.com/ieasydevops/wexin-plugin#readme",
+  "devDependencies": {
+    "rimraf": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "files": [
+    "manifest.json",
+    "src/",
+    "icons/",
+    "README.md",
+    "LICENSE"
+  ],
+  "extensionInfo": {
+    "manifestVersion": 3,
+    "chromeMinVersion": "88",
+    "permissions": [
+      "activeTab",
+      "storage",
+      "scripting"
+    ],
+    "hostPermissions": [
+      "https://mp.weixin.qq.com/*"
+    ]
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "src"
+  }
+} 
